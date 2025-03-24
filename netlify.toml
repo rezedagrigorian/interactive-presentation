@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/api/reactions"
+  to = "/api/reactions"
+  status = 200
+  force = true
+  [redirects.headers]
+    X-From = "Netlify"
+  conditions = {Role = ["admin"]}
+
+[functions]
+  external_node_modules = ["@socket.io/redis-adapter"]
+
+[dev]
+  framework = "nuxt"
+  targetPort = 3000
